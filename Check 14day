@@ -1,0 +1,52 @@
+import requests
+import sys as n
+import time
+import time as mm
+import uuid
+def slow(M):
+    for c in M + '\n':
+        n.stdout.write(c)
+        n.stdout.flush()
+        mm.sleep(1. / 600)
+
+	  
+slow("""
+  __  __   𝗧𝗘: 𝗠𝗢𝗥𝗘𝗦𝗫     __   __
+ |  \/  | ___  _ __ ___  ___\ \/ /
+ | |\/| |/ _ \| '__/ _ \/ __|\  / 
+ | |  | | (_) | | |  __/\__ \/  \ 
+ |_|  |_|\___/|_|  \___||___/_/\_\
+                                  
+                                  """)
+banner = '''
+'''
+print(banner)
+uid = uuid.uuid4()
+link = "https://i.instagram.com/api/v1/accounts/create_validated/"
+headers = {"user-agent": 'Instagram 113.0.0.39.122 Android (24/5.0; 515dpi; 1440x2416; huawei/google; Nexus 6P; angler; angler; en_US)', 'x-csrftoken': 'missing', 'mid': 'missing'}
+def On(my_user):
+  data = {
+        'device_id':uid,
+        'email': 'asdahsdhausdu2@gmail.com',
+        'enc_password': '#PWD_INSTAGRAM_BROWSER:0:1589682409:justfortest12',
+        'queryParams': '{}',
+        'optIntoOneTap': 'false',
+        'username': my_user,
+        'first_name': 'SUPER S2TRNG V1',
+        'client_id': uid,
+        'seamless_login_enabled': 0,
+        'opt_into_one_tap': 'false'
+
+       }
+  req = requests.post(link,headers=headers,data=data)
+  if req.text.find("This username isn't available. Please try another.")>=0:
+    print(f'@{my_user} 𝗡𝗢𝗧 𝟭𝟰 𝗗𝗔𝗬\n----------------')
+    my_user = input("𝗘𝗡𝗧𝗘𝗥 𝗨𝗦𝗘𝗥 :")
+    On(my_user)
+    print('ERROR! , Run again Please\n---------------')
+  elif req.text.find("This username isn't available.")>=0:
+    print(f'@{my_user} 𝗜𝗧𝗦 14 𝗗𝗔𝗬𝗦 \n------------------')
+    my_user = input("𝗘𝗡𝗧𝗘𝗥 𝗨𝗦𝗘𝗥 :")
+    On(my_user)
+my_user = input("𝗘𝗡𝗧𝗘𝗥 𝗨𝗦𝗘𝗥 :")
+On(my_user)
